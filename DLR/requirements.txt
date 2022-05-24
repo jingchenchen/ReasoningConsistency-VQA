@@ -1,0 +1,5 @@
+numpy==1.19.5
+h5py==3.1.0
+torch==1.9.1.post3
+file_utils==0.0.1
+PyYAML==6.0
