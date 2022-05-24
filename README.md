@@ -4,7 +4,7 @@
 
 ## GQA-Sub Dataset 
 
-## Dialog-like reasoning 
+## Dialog-like Reasoning Method
 
 ## Citation
 
