@@ -29,7 +29,6 @@ Please download all the question files from [here](https://www.dropbox.com/s/vdd
 ``` sh
 cd dir/
 python exp/main.py exp_id 001 dialog True TRAIN.SPLIT_VQA train_dialog_balanced
-
 ``` 
 
 #### Step 3: evaluation
@@ -38,8 +37,6 @@ python exp/main.py exp_id 001 dialog True TRAIN.SPLIT_VQA train_dialog_balanced
 python exp/main.py train False TEST.EVAL_ID 001 TEST.EPOCH 10 TEST.DUMP_PRED True TEST.SPLIT_VQA val_sub_balanced
 python exp/main.py train False TEST.EVAL_ID 001 TEST.EPOCH 10 TEST.DUMP_PRED True TEST.SPLIT_VQA val_balanced 
 python util/compute_consistency.py --exp_name 001_DLR --epoch 10
-
-
 ``` 
 
 
