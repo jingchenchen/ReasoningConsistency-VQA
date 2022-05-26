@@ -2,6 +2,15 @@
 import os
 import numpy as np 
 import json
+import argparse
+
+def get_config():
+    """ Set default and command line arguments. """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--exp_name", required=True, type=str, )
+    parser.add_argument("--epoch", required=True, type=int)
+    args = parser.parse_args()
+    return args 
 
 
 def obtain_qid2sqids(questions,sub_questions):
@@ -78,18 +87,25 @@ def obtain_consistency_from_res(res,questions,qid2sqids,split='val'):
     print('rc_k',consistency)
 
 
-question_root = 'exp/dataset/questions'
+def main():
+    
+    args = get_config()
 
-questions = {}
-val_questions = json.load(open(os.path.join(question_root,'val_balanced_questions.json')))
-questions['val'] = val_questions
+    question_root = 'exp/dataset/questions'
+    results_root = 'exp/results'
 
-val_sub_questions = json.load(open(os.path.join(question_root,'val_sub_balanced_questions.json')))
-questions['val_sub'] = val_sub_questions
+    questions = {}
+    val_questions = json.load(open(os.path.join(question_root,'val_balanced_questions.json')))
+    questions['val'] = val_questions
 
-qid2sqids_val = obtain_qid2sqids(val_questions,val_sub_questions)
+    val_sub_questions = json.load(open(os.path.join(question_root,'val_sub_balanced_questions.json')))
+    questions['val_sub'] = val_sub_questions
 
-res = load_pred_files('003_DLR',10,'val','exp/results') 
-obtain_consistency_from_res(res,questions,qid2sqids_val)
+    qid2sqids_val = obtain_qid2sqids(val_questions,val_sub_questions)
+
+    res = load_pred_files(args.exp_name,args.epoch,'val',results_root) 
+    obtain_consistency_from_res(res,questions,qid2sqids_val)
 
 
+if __name__ == "__main__":
+    main()
