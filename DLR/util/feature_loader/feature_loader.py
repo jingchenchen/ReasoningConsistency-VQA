@@ -10,9 +10,10 @@ class ObjectsFeatureLoader:
 
     def load_feature(self, imageId):
         feature = np.zeros([self.objects_M, 2048])
-        h5_path = osp.join(self.feature_path, imageId + '.h5')
-        with h5py.File(h5_path, 'r') as hf:
-            fea = np.array(hf['features'])# bottom-up features
+        imagename = imageId if 'n' in imageId else '%07d' % int(imageId)
+        npz_path = osp.join(self.feature_path, 'gqa_' + imagename + '.npz')
+        npz_data = np.load(npz_path)
+        fea = npz_data['features']
         num = fea.shape[0]
         if num > self.objects_M:
             fea = fea[:self.objects_M,:]
@@ -24,10 +25,11 @@ class ObjectsFeatureLoader:
     def load_feature_normalized_bbox(self, imageId):
         feature = np.zeros([self.objects_M, 2048])
         bbox = np.zeros([self.objects_M, 6])
-        h5_path = osp.join(self.feature_path, imageId + '.h5')
-        with h5py.File(h5_path, 'r') as hf:
-            fea = np.array(hf['features']) # bottom-up features
-            box = np.array(hf['norm_bb']) # bounding boxes
+        imagename = imageId if 'n' in imageId else '%07d' % int(imageId)
+        npz_path = osp.join(self.feature_path, 'gqa_' + imagename + '.npz')
+        npz_data = np.load(npz_path)
+        fea = npz_data['features']
+        box = npz_data['norm_bb']
         num = fea.shape[0]
         if num > self.objects_M:
             fea = fea[:self.objects_M,:]

@@ -49,6 +49,7 @@ If you find the dataset or code useful, please consider citing our paper:
   title={Maintaining Reasoning Consistency in Compositional Visual Question Answering},
   author={Jing, Chenchen and Jia, Yunde and Wu, Yuwei and Liu, Xinyu and Wu, Qi},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={5099-5108},
   year={2022}
 }
 ```
