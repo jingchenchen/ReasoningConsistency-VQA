@@ -56,8 +56,8 @@ If you find the dataset or code useful, please consider citing our paper:
 
 ## Acknowledgment
 
-The implementation of the dialog-like reasoning is partly based on the following codebases. We gratefully thank the authors for their wonderful works: 
+The implementation of the dialog-like reasoning method is partly based on the following codebases, 
 [LCGN](https://github.com/ronghanghu/lcgn),
 [MMN](https://github.com/wenhuchen/Meta-Module-Network),
-[Logic-guided QA](https://github.com/AkariAsai/logic_guided_qa),
-
+and [Logic-guided QA](https://github.com/AkariAsai/logic_guided_qa).
+We gratefully thank the authors for their wonderful works.
